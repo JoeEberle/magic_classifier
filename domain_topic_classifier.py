@@ -54,8 +54,8 @@ DOMAIN_KEYWORDS = {
 
         # medical terms
         "doctor", "physician", "nurse", "practitioner", "appointment", "visit", "checkup", "referral", "triage",
-        "admission", "discharge", "hospitalization", "clinic", "hospital", "inpatient", "outpatient",
-        "emergency department", "urgent care", "primary care", "specialist", "chart", "medical record", "ehr",
+        "admission", "discharge", "hospitalization", "clinic", "hospital", "inpatient", "outpatient", "hospital"
+        "emergency department", "urgent care", "primary care", "specialist", "chart", "medical record", "ehr", "hospitalize"
         "prescription", "medication", "iv", "infusion", "anesthesia", "procedure", "surgery", "labs", "vitals",
         "diagnosis", "insurance", "copay", "authorization", "exam", "examination", "medical", "conditions", "condition" 
 
@@ -96,7 +96,7 @@ TOPIC_KEYWORDS = {
     "cardiovascular disease": {"myocardial", "heart attack", "stroke", "hypertension", "blood pressure", "cholesterol"},
     "infectious disease": {"covid", "flu", "hepatitis", "hiv", "aids", "tuberculosis", "malaria", "influenza", "flu", "covid"},
     "respiratory disease ": {"asthma", "copd", "bronchitis"},
-    "disease Neurological": {"alzheimers", "parkinsons", "depression", "anxiety", "autism", "epilepsy"},
+    "neurological": {"alzheimers", "parkinsons", "depression", "anxiety", "autism", "epilepsy"},
     "condition": {"pregnancy", "smoking", "addicted", "addict","addicted"},
     "weight": {"obese", "fat", "skinny", "diet", "weight loss", "overweight","obesity"},
     "medication": {"ozempic", "wegovy", "aspirin", "viagra", "opioid", "statin", "antidepressant", "antibiotics", "acetaminophen", "ibuprofen", "painkiller",
@@ -129,6 +129,24 @@ TOPIC_KEYWORDS = {
     "blood transfusion", "intubation", "ventilation", "physical therapy"},
     "penguin": {"flipper", "beak", "gentoo", "penguins", "feathers", "colony", "antarctica", "huddle"},
     "titanic": {"passenger", "ticket class", "survived", "died", "titanic", "iceberg", "lifeboat", "drown", "ship", "deck"}   
+}
+
+TOPIC_TO_DOMAIN = {
+    "disease": "health_care",
+    "cardiovascular disease": "health_care",
+    "medical": "health_care", 
+    "procedure": "health_care",   
+    "infectious disease": "health_care", 
+    "chronic disease": "health_care",  
+    "lab result": "health_care",          
+    "behavioral": "health_care",   
+    "condition": "health_care",       
+    "anatomy": "health_care",      
+    "weight": "health_care",      
+    "medication": "health_care",          
+    "neurological": "health_care",      
+    "penguin": "penguin",
+    "titanic": "titanic"
 }
 
 
@@ -352,7 +370,41 @@ def test_ethical_guardrail_classifier(sample_sentence):
     print(f"Sexism: {sexism_classifier(sample_sentence)}\n")
     print(f"Racism: {racism_classifier(sample_sentence)}\n")   
     print(f"PHI: {phi_classifier(sample_sentence)}\n")       
-    print(f"Innapropriate Language: {innapropriate_language_classifier(sample_sentence)}\n")        
+    print(f"Innapropriate Language: {innapropriate_language_classifier(sample_sentence)}\n")     
+
+
+
+def compute_domain_topic_association(text, use_fuzzy=False, use_stemming=False):
+    # Run classifiers
+    domain, d_score, d_conf, d_evidence = domain_classifier(text, use_fuzzy, use_stemming)
+    topic, t_score, t_conf, t_evidence = topic_classifier(text, use_fuzzy, use_stemming)
+
+    # Get expected domain for topic
+    expected_domain = TOPIC_TO_DOMAIN.get(topic)
+
+    if expected_domain is None:
+        association_strength = "unknown"
+        explanation = f"No known domain mapping for topic: {topic}"
+    elif expected_domain == domain:
+        avg_confidence = round((d_conf + t_conf) / 2, 2)
+        association_strength = "strong"
+        explanation = f"Topic '{topic}' correctly maps to domain '{domain}' with avg confidence {avg_confidence}%."
+    else:
+        association_strength = "weak"
+        explanation = f"Topic '{topic}' is typically under domain '{expected_domain}', not '{domain}'."
+
+    return {
+        "topic": topic,
+        "domain": domain,
+        "association_strength": association_strength,
+        "confidence": (d_conf, t_conf),
+        "evidence": {"domain": d_evidence, "topic": t_evidence},
+        "explanation": explanation
+    }
+
+
+result = compute_domain_topic_association("Does aspirin help with heart attacks?")
+print(result)
  
 def get_sample_questions():
     sentences = [
@@ -402,3 +454,5 @@ def run_ethical_guardrail_sample_test():
     for sentence in sample_sentences:
         test_ethical_guardrail_classifier(sentence)
     return    
+
+
