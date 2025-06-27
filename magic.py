@@ -292,6 +292,34 @@ def heatmap_insights_generator(df, threshold=0.7, max_pairs=10):
 # Example usage:
 # print(heatmap_insights_generator(df_penguins))
 
+# Pseudo-code overview
+
+# 1. LangChain Tool Definitions
+@tool
+def generate_correlation_heatmap(df): ...
+
+@tool
+def generate_histogram(df): ...
+
+@tool
+def generate_wordcloud(df): ...
+
+@tool
+def load_magic_data(table_name): ...
+
+# 2. Router chain (uses prompt to pick tool)
+router_prompt = PromptTemplate.from_template("Choose the best tool for: {magic_command}")
+router_chain = LLMRouterChain(llm, tools=[...], prompt=router_prompt)
+
+# 3. LangGraph Nodes
+nodes = {
+    "load_data": lambda state: load_magic_data(state['table_name']),
+    "select_tool": router_chain,
+    "execute_tool": lambda state: state['tool'](state['df']),
+}
+
+graph = LangGraph(nodes, start="load_data", end="execute_tool")
+
 
 
 
