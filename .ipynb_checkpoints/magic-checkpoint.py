@@ -10,6 +10,7 @@ import numpy as np   #numpy is for array processing
 import seaborn  as sns
 import PIL.Image
 from wordcloud import WordCloud, STOPWORDS
+import domain_topic_classifier as dtc
 stopwords = STOPWORDS
 
 # Domain keywords organized for clarity and scalability
@@ -247,7 +248,14 @@ def perform_magic(magic_command, table_name):
         if table_name == 'titanic':
             perform_magic_word_cloud(df_magic, 'heart.png')   
         if table_name == 'wny_health':
-            perform_magic_word_cloud(df_magic, 'heart.png')                   
+            perform_magic_word_cloud(df_magic, 'heart.png')     
+
+def run_magic(sentence):
+    domain_class,domain_score,domain_confidence,domain_evidence = dtc.domain_classifier(sentence, True, True)
+    magic_class,magic_score,magic_confidence,magic_evidence = magic_classifier(sentence, True, True)
+    magic_table = find_magic_table_name(domain_class)  
+    # print(f"\n#{idx}  {sentence} \n\nmagic class:{magic_class}  in domain:{domain_class}  finding table:{magic_table} \n\n")  
+    graph = perform_magic(magic_class, magic_table)
         
 
 def heatmap_insights_generator(df, threshold=0.7, max_pairs=10):
@@ -291,6 +299,34 @@ def heatmap_insights_generator(df, threshold=0.7, max_pairs=10):
 
 # Example usage:
 # print(heatmap_insights_generator(df_penguins))
+
+# Pseudo-code overview
+
+# # 1. LangChain Tool Definitions
+# @tool
+# def generate_correlation_heatmap(df): ...
+
+# @tool
+# def generate_histogram(df): ...
+
+# @tool
+# def generate_wordcloud(df): ...
+
+# @tool
+# def load_magic_data(table_name): ...
+
+# # 2. Router chain (uses prompt to pick tool)
+# router_prompt = PromptTemplate.from_template("Choose the best tool for: {magic_command}")
+# router_chain = LLMRouterChain(llm, tools=[...], prompt=router_prompt)
+
+# # 3. LangGraph Nodes
+# nodes = {
+#     "load_data": lambda state: load_magic_data(state['table_name']),
+#     "select_tool": router_chain,
+#     "execute_tool": lambda state: state['tool'](state['df']),
+# }
+
+# graph = LangGraph(nodes, start="load_data", end="execute_tool")
 
 
 

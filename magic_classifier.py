@@ -129,6 +129,8 @@ def test_magic_classifier(sample_sentence):
     print(f"Domain: {domain_classifier(sample_sentence)}")
     print(f"Topic: {topic_classifier(sample_sentence)}\n")
 
+
+
       
  
 def get_sample_questions():

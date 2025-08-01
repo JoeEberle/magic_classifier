@@ -57,29 +57,3 @@ Identify a specialist provider based on patient needs and location.
 ### 🏘️ `Find a social needs`
 Connect users with community-based organizations addressing social needs (e.g., food, housing, transportation).
 
-
-
-
-# 🧩 AI Magic Commands
-
-#### AI magic to empower and enrich humans 
-
-> Created by **ThriveAI  ...      Joe Eberle**  
-> 🗓️ Started: April 18, 2025 
-> 📫 Contact: [josepheberle@outlook.com](mailto:josepheberle@outlook.com)  
-> 🔗 GitHub: [JoeEberle](https://github.com/JoeEberle/)
-
-
-
-
-
-
-## Magic architecture (MVC) 
-
-1. **Identify Magic** - Automatically identifes major steps in notebook
-2. **Load Data** - 1000 rows 95% accurate or  10000 rows 98.5% accurate or load whole table (100% accurate) 
-3. **Perform Magic** - process Magic to produce nlp text or .png, or plot, or dataframe, or html 
-4. **Render Magic Result** - render to produce .png, or plot, or html 
-5. **Magic Controller** - special commands to work with magic results 
-
-
