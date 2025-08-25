@@ -254,7 +254,6 @@ def run_magic(sentence):
     domain_class,domain_score,domain_confidence,domain_evidence = dtc.domain_classifier(sentence, True, True)
     magic_class,magic_score,magic_confidence,magic_evidence = magic_classifier(sentence, True, True)
     magic_table = find_magic_table_name(domain_class)  
-    # print(f"\n#{idx}  {sentence} \n\nmagic class:{magic_class}  in domain:{domain_class}  finding table:{magic_table} \n\n")  
     graph = perform_magic(magic_class, magic_table)
         
 
