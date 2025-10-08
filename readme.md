@@ -75,20 +75,6 @@ Connect users with community-based organizations addressing social needs (e.g., 
 
 
 
-# 🧩 AI Magic Commands
-
-#### AI magic to empower and enrich humans 
-
-> Created by **ThriveAI  ...      Joe Eberle**  
-> 🗓️ Started: April 18, 2025 
-> 📫 Contact: [josepheberle@outlook.com](mailto:josepheberle@outlook.com)  
-> 🔗 GitHub: [JoeEberle](https://github.com/JoeEberle/)
-
-
-
-
-
-
 ## Magic architecture (MVC) 
 
 1. **Identify Magic** - Automatically identifes major steps in notebook
@@ -96,6 +82,136 @@ Connect users with community-based organizations addressing social needs (e.g., 
 3. **Perform Magic** - process Magic to produce nlp text or .png, or plot, or dataframe, or html 
 4. **Render Magic Result** - render to produce .png, or plot, or html 
 5. **Magic Controller** - special commands to work with magic results 
+
+
+
+
+
+## AI assistent workflow
+
+1. **Take in question** - import natural language  question
+    Artifact 1 - Question
+2. **Generate prompt for SQL** - Prompt engineers the NLP question into something more suitable for SQL generation 
+    Artifact 2 - Prompt
+3. **Generate SQL** - Using local LLM generate the SQL command 
+    Artifact 3 - SQL command 
+4. **Run SQL** - Run the SQL against the data warehouse 
+    Artifact 4 - SQL results (in dataframe) 
+5. **Convert results into pandas dataframe** - serialize the SQL results into a pandas dataframe 
+    Artifact 5 - Persist Data Frame  
+6. **Generate Matrix** - display the pandas dataframe somehow
+    Artifact 6 - Persist Matrix  
+7. **Generate Chart** - perform plotly through LLM 
+    Artifact 7 - Persist Chart 
+8. **Generate Summary** - perform summary through LLM 
+    Artifact 8 - Persist Summary  
+9. **Generate Insights** - perform insights through LLM 
+    Artifact 9 - Persist Insights     
+    
+
+
+
+
+
+## AI assistent workflow
+
+1. **Take in question** - import natural language  question
+    - Artifact 1  **Question**
+2. **Generate prompt for SQL** - Prompt engineers the NLP question into something more suitable for SQL generation 
+    - Artifact 2  **Prompt**
+3. **Generate SQL** - Using local LLM generate the SQL command 
+    - Artifact 3  **SQL command**  
+4. **Run SQL** - Run the SQL against the data warehouse 
+    - Artifact 4  **SQL results** (in dataframe) 
+5. **Convert results into pandas dataframe** - serialize the SQL results into a pandas dataframe 
+    Artifact 5 - Persist Data Frame  
+6. **Generate Matrix** - display the pandas dataframe somehow
+    Artifact 6 - Persist Matrix  
+7. **Generate Chart** - perform plotly through LLM 
+    Artifact 7 - Persist Chart 
+8. **Generate Summary** - perform summary through LLM 
+    Artifact 8 - Persist Summary  
+9. **Generate Insights** - perform insights through LLM 
+    Artifact 9 - Persist Insights     
+    
+
+
+
+
+
+## AI assistent workflow
+
+1. **Take in question** - import natural language  question
+    - Artifact 1  **Question**
+2. **Generate prompt for SQL** - Prompt engineers the NLP question into something more suitable for SQL generation 
+    - Artifact 2  **Prompt**
+3. **Generate SQL** - Using local LLM generate the SQL command 
+    - Artifact 3  **SQL command**  
+4. **Run SQL** - Run the SQL against the data warehouse 
+    - Artifact 4  **SQL results** (in dataframe) 
+5. **Convert results into pandas dataframe** - serialize the SQL results into a pandas dataframe 
+    - Artifact 5  Persist **Data Frame**  
+6. **Generate Matrix** - display the pandas dataframe somehow
+    - Artifact 6 Persist **Matrix**  
+7. **Generate Chart** - perform plotly through LLM 
+    - Artifact 7  Persist Chart 
+8. **Generate Summary** - perform summary through LLM 
+    - Artifact 8 Persist Summary  
+9. **Generate Insights** - perform insights through LLM 
+    - Artifact 9 Persist Insights     
+    
+
+
+
+
+
+## AI assistent workflow
+
+1. **Take in question** - import natural language  question
+    - Artifact 1  **Question**
+2. **Generate prompt for SQL** - Prompt engineers the NLP question into something more suitable for SQL generation 
+    - Artifact 2  **Prompt**
+3. **Generate SQL** - Using local LLM generate the SQL command 
+    - Artifact 3  **SQL command**  
+4. **Run SQL** - Run the SQL against the data warehouse 
+    - Artifact 4  **SQL results** (in dataframe) 
+5. **Convert results into pandas dataframe** - serialize the SQL results into a pandas dataframe 
+    - Artifact 5  Persist **Data Frame**  
+6. **Generate Matrix** - display the pandas dataframe somehow
+    - Artifact 6 Persist **Matrix**  
+7. **Generate Chart** - perform plotly through LLM 
+    - Artifact 7  Persist **Chart** 
+8. **Generate Summary** - perform summary through LLM 
+    - Artifact 8 Persist **Summary**  
+9. **Generate Insights** - perform insights through LLM 
+    - Artifact 9 Persist **Insights**     
+    
+
+
+
+
+
+## AI assistent workflow - What is a research Canvas ??? 
+
+1. **Take in question** - import natural language  question
+    - Artifact 1  **Question**
+2. **Generate prompt for SQL** - Prompt engineers the NLP question into something more suitable for SQL generation 
+    - Artifact 2  **Prompt**
+3. **Generate SQL** - Using local LLM generate the SQL command 
+    - Artifact 3  **SQL command**  
+4. **Run SQL** - Run the SQL against the data warehouse 
+    - Artifact 4  **SQL results** (in dataframe) 
+5. **Convert results into pandas dataframe** - serialize the SQL results into a pandas dataframe 
+    - Artifact 5  Persist **Data Frame**  
+6. **Generate Matrix** - display the pandas dataframe somehow
+    - Artifact 6 Persist **Matrix**  
+7. **Generate Chart** - perform plotly through LLM 
+    - Artifact 7  Persist **Chart** 
+8. **Generate Summary** - perform summary through LLM 
+    - Artifact 8 Persist **Summary**  
+9. **Generate Insights** - perform insights through LLM 
+    - Artifact 9 Persist **Insights**     
+    
 
 
 <br>
