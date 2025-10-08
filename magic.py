@@ -230,11 +230,14 @@ def perform_magic_word_cloud(df, shape_image_file):
 
 
 def perform_magic(magic_command, table_name):
-    df_magic = magic_data_load(table_name)
+    if len(table_name) > 2:
+        df_magic = magic_data_load(table_name)
     if magic_command == 'correlation heatmap':
         perform_magic_correlation_heatmap(df_magic)
     if magic_command == 'histogram':
-        perform_magic_histogram(df_magic)        
+        perform_magic_histogram(df_magic)      
+    if magic_command == 'display':
+        display(image_name)           
     if magic_command == 'pair plot':
         if table_name == 'penguin':
             perform_magic_pairplot(df_magic, 'species')

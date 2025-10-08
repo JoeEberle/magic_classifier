@@ -1,4 +1,8 @@
-2025-07-26 22:31:09,216 - INFO - START magic_classifier =============================================
-2025-07-26 22:31:09,216 - INFO - START magic_classifier Start Time = 2025-07-26 22:31:09
-2025-07-26 22:31:09,216 - INFO - magic_classifier Step 0 - Initialize the configuration file parser
-2025-07-26 22:31:09,216 - INFO - Process magic_classifier Step 0 - Initializing and starting Logging Process.
+2025-09-04 10:12:37,327 - INFO - START magic_classifier =============================================
+2025-09-04 10:12:37,327 - INFO - START magic_classifier Start Time = 2025-09-04 10:12:37
+2025-09-04 10:12:37,327 - INFO - magic_classifier Step 0 - Initialize the configuration file parser
+2025-09-04 10:12:37,327 - INFO - Process magic_classifier Step 0 - Initializing and starting Logging Process.
+2025-09-04 10:17:21,591 - INFO - Pandas backend loaded 2.2.2
+2025-09-04 10:17:21,609 - INFO - Numpy backend loaded 1.26.4
+2025-09-04 10:17:21,610 - INFO - Pyspark backend NOT loaded
+2025-09-04 10:17:21,610 - INFO - Python backend loaded
