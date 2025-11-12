@@ -4,11 +4,7 @@
 
 ## identify if a magic command is found if chat input based upon magic keywords
 
-    
-![Solution](code.png)
-
-    
-
+    ![Image image_filename](code.png)
 # 🧠 Magic Commands
 
 Thrive AI supports the following intelligent functions to assist with data exploration, analytics, and service navigation:
@@ -210,7 +206,7 @@ Connect users with community-based organizations addressing social needs (e.g., 
 
 
 
-Welcome to the solution **Magic Classifier** - an example for your projects
+Welcome to the solution **Magic Classifier** 
 
 identify if a magic command is found if chat input based upon magic keywords
 
@@ -416,13 +412,7 @@ Connect users with community-based organizations addressing social needs (e.g., 
 
 
 <br>
-
-![Solution](code.png)
-
-    
-![Solution](code.png)
-
-    
+![Image image_filename](code.png)![Image image_filename](sample.png)
 ## Getting Started
 
 The goal of this solution is to **Jump Start** your development and have you up and running in 30 minutes. 
