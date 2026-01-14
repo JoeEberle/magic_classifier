@@ -10,6 +10,7 @@ from typing import List, Dict, Optional
 import streamlit as st
 import domain_topic_classifier as dtc
 import magic_classifier as mg 
+import ethical_guideline as eg 
 
 # -----------------------------
 # Page & global config
@@ -63,11 +64,27 @@ def logout():
 # Chat model (stub for now)
 # -----------------------------
 def process_question(question: str, *, user_id: Optional[str] = None, controls: Optional[dict] = None) -> str:
+
+    ethical_non_response = """
+    This assitant is designed to provide helpful and informative responses within ethical and responsible boundaries. 
+    Questions that are harmful or inappropriate will not be answered. By using this platform, you agree to engage respectfully and abide by      our ethical use guidelines. Please rephrase the question """ 
+
     processed_answer = question
-    domain_class,domain_score,domain_confidence,domain_evidence = dtc.domain_classifier(question, True, True)
-    processed_answer += "\n\n" + f" domain class:{domain_class} score:{domain_score} " 
-    magic_class,magic_score,magic_confidence,magic_evidence = mg.magic_classifier(question, True, True)
-    processed_answer += "\n\n" + f" magic class:{magic_class} score:{magic_score} "     
+
+    # Step 1 test for ethics to remove hate, racism, practicing medicine etc
+    guideline, guideline_number  = eg.get_ethical_guideline(question) 
+    if guideline_number == 1: 
+        processed_answer += "\n" + f"Step 1 - ethical guardrails finds question appropriate " 
+    if guideline_number == 2: 
+        return ethical_non_response
+    if guideline_number == 3: 
+        processed_answer = "The Chatbot is designed to assist - please rephrase the question" 
+        return processed_answer        
+        processed_answer = question
+        domain_class,domain_score,domain_confidence,domain_evidence = dtc.domain_classifier(question, True, True)
+        processed_answer += "\n" + f"domain class:{domain_class} score:{domain_score} evidence:{domain_evidence} " 
+        magic_class,magic_score,magic_confidence,magic_evidence = mg.magic_classifier(question, True, True)
+        processed_answer += "\n" + f"magic class:{magic_class} score:{magic_score} evidence:{magic_evidence} "     
     return processed_answer
 
 # -----------------------------
